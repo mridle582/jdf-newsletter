@@ -21,13 +21,13 @@
 
 <body class="text-center">
     <main class="form-signin">
-        <form>
+        <form action="/" method="POST">
             <img class="mb-4" id="term-pc" src="images/term-pc.png" alt="" width="90" height="90">
             <h1 class="h3 mb-3 fw-normal" id="login-title">Signup To My Newsletter!</h1>
 
-            <input type="text" class="form-control top" placeholder="First Name" required autofocus>
-            <input type="text" class="form-control middle" placeholder="Last Name" required>
-            <input type="email" class="form-control bottom" placeholder="Email" required>
+            <input type="text" class="form-control top" name="fName" placeholder="First Name" required autofocus>
+            <input type="text" class="form-control middle" name="lName" placeholder="Last Name" required>
+            <input type="email" class="form-control bottom" name="email" placeholder="Email" required>
 
             <button class="w-100 btn btn-lg btn-primary" type="submit">Sign Me Up!</button>
             <p class="mt-5 mb-3 text-muted">&copy; James Finn</p>
