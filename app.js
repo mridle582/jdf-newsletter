@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const port = 3000;
+const port = process.env.PORT;
 
 const express = require("express");
 const bodyPaser = require("body-parser");
@@ -59,6 +59,11 @@ app.post("/failure", (req, res) => {
 });
 
 
-app.listen(port, () => {
-    console.log(`the server is running on port ${port}`);
+app.listen(port || 3000, () => {
+    if (typeof port !== "undefined"){
+        console.log(`the server is running on port ${port}`);
+    }
+    else {
+        console.log(`the server is running on port 3000`);
+    }
 });
