@@ -5,7 +5,6 @@ const port = 3000;
 const express = require("express");
 const bodyPaser = require("body-parser");
 const mailchimp = require("@mailchimp/mailchimp_marketing");
-const request = require("request");
 
 const app = express();
 
@@ -13,7 +12,6 @@ app.use(express.static("public"));
 app.use(bodyPaser.urlencoded({
     extended: true
 }));
-
 
 app.get("/", (req, res) => {
     res.sendFile(`${__dirname}/signup.html`);
@@ -42,7 +40,15 @@ app.post("/", (req, res) => {
         console.log(`Successfully added contact as an audience member. The contact's id is ${
             response.id}.`);
     }
-    run().catch(e => res.sendFile(`${__dirname}/failure.html`));
+    run().catch(e => {
+        console.log(e);
+        res.sendFile(`${__dirname}/failure.html`);
+    });
+
+});
+
+app.post("/failure", (req, res) => {
+    res.redirect("/");
 });
 
 
