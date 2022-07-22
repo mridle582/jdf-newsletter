@@ -8,19 +8,25 @@ const mailchimp = require("@mailchimp/mailchimp_marketing");
 
 const app = express();
 
+
 app.use(express.static("public"));
+
+
 app.use(bodyPaser.urlencoded({
     extended: true
 }));
+
 
 app.get("/", (req, res) => {
     res.sendFile(`${__dirname}/signup.html`);
 });
 
+
 mailchimp.setConfig({
     apiKey: process.env.MAIL_CHIMP_API_KEY,
     server: process.env.MAIL_CHIMP_SERVER
 });
+
 
 app.post("/", (req, res) => {
     const firstName = req.body.fName;
@@ -46,6 +52,7 @@ app.post("/", (req, res) => {
     });
 
 });
+
 
 app.post("/failure", (req, res) => {
     res.redirect("/");
